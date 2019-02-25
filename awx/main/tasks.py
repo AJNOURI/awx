@@ -1292,8 +1292,8 @@ class RunJob(BaseTask):
                 ...
             },
             'certificates': {
-                <awx.main.models.Credential>: <signed SSH certifacte data>,
-                <awx.main.models.Credential>: <signed SSH certifacte data>,
+                <awx.main.models.Credential>: <signed SSH certificate data>,
+                <awx.main.models.Credential>: <signed SSH certificate data>,
                 ...
             }
         }
@@ -2227,8 +2227,8 @@ class RunAdHocCommand(BaseTask):
                 ...
             },
             'certificates': {
-                <awx.main.models.Credential>: <signed SSH certifacte data>,
-                <awx.main.models.Credential>: <signed SSH certifacte data>,
+                <awx.main.models.Credential>: <signed SSH certificate data>,
+                <awx.main.models.Credential>: <signed SSH certificate data>,
                 ...
             }
         }
