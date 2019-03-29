@@ -306,17 +306,28 @@ const getUpdatedProject = (namespace = session) => {
  * @param [namespace] - Name prefix for associated dependencies.
  * @param [playbook] - Playbook for the job template.
  * @param [name] - Unique name prefix for the job template.
+ * @param [updateProject] - Choose whether to sync the project with its repository.
  * */
 const getJobTemplate = (
     namespace = session,
     playbook = 'hello_world.yml',
-    name = `${namespace}-job-template`
+    name = `${namespace}-job-template`,
+    updateProject = true
 ) => {
-    const promises = [
-        getInventory(namespace),
-        getAdminMachineCredential(namespace),
-        getUpdatedProject(namespace)
-    ];
+    let promises;
+    if (updateProject) {
+        promises = [
+            getInventory(namespace),
+            getAdminMachineCredential(namespace),
+            getUpdatedProject(namespace)
+        ];
+    } else {
+        promises = [
+            getInventory(namespace),
+            getAdminMachineCredential(namespace),
+            getProject(namespace)
+        ];
+    }
 
     return Promise.all(promises)
         .then(([inventory, credential, project]) => getOrCreate('/job_templates/', {
